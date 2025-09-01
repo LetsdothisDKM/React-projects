@@ -1,0 +1,103 @@
+.status {
+  border-width: 10px;
+  border-radius: 40px;
+  margin: 10px;
+  color: 'black';
+  animation-name: glow;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  padding: 10px;
+  /* animation-name: breath;
+  animation-duration: 1s; 
+  animation-iteration-count: infinite; 
+  animation-timing-function: ease-in-out;  */
+}
+
+.statusElements {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    /* Initial subtle glow */
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 255, 1), 0 0 30px rgba(255, 0, 255, 0.8);
+    /* Stronger glow */
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    /* Return to subtle glow */
+  }
+}
+
+
+@keyframes breath {
+  0% {
+    /* Styles at the beginning of the animation */
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    /* Styles at the midpoint */
+    transform: scale(1.1);
+    /* Increase size */
+    opacity: 0.9;
+  }
+
+  100% {
+    /* Styles at the end of the animation */
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.message {
+  opacity: 0;
+  animation: fadeInOut 4s ease-in-out forwards;
+  font-size: 24px;
+  font-weight: bold;
+  color: #49ddf0ca;
+}
+
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  /* fade in */
+  80% {
+    opacity: 1;
+  }
+
+  /* stay visible */
+  100% {
+    opacity: 0;
+  }
+
+  /* fade out */
+}
+
+
+@keyframes slide-in {
+  from {
+    transform: translateY(100%);
+
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
