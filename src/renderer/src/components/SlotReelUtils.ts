@@ -24,16 +24,16 @@ const createRewardsMap = (): void => {
 }
 createRewardsMap()
 
-const getCombinations = (arr, len): Array<Array<number>> => {
-  if (len == 1) {
-    return arr.map((item) => [item])
+const getCombinations = (arr, length): Array<Array<number>> => {
+  if (length === 1) {
+    return arr.map((el) => [el])
   }
 
   const res: Array<Array<number>> = []
-  arr.forEach((item) => {
+  arr.forEach((el) => {
     const smallerCombos = getCombinations(arr, length - 1)
     smallerCombos.forEach((combo) => {
-      res.push([item, ...combo])
+      res.push([el, ...combo])
     })
   })
   return res

@@ -31,7 +31,6 @@ function createWindow(): void {
   // Load the remote URL for development or the local html file for production.
   if (is.dev) {
     mainWindow.loadURL('http://localhost:5173')
-    mainWindow.webContents.openDevTools()
   }
   // } else if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
   //   mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])

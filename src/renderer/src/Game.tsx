@@ -64,7 +64,7 @@ const Game = ({ playerName }: Props): React.ReactElement => {
         <SpinButton
           className="headerItem"
           disabled={coins <= 10 || scroll || autoSpinned}
-          onClickingSpin={() => setAutoSpinned(true)}
+          onClickingSpin={() => {}}
           text="Auto Spin"
         />
         <h1 className="title">SLOT MACHINE</h1>

@@ -34,7 +34,6 @@ const DatabaseTest = (): React.ReactElement => {
 
   // Add a test player
   const handleAddPlayer = async (): Promise<void> => {
-    console.log('abccc')
     try {
       const player = await window.api.getOrCreatePlayer(testName)
       setTestPlayer(player)
