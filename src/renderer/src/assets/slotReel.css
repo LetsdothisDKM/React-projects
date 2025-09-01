@@ -1,80 +1,75 @@
+.scrollContainer {
+  width: '100%';
+  border-radius: 40px;
+  background-color: navy;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  overflow-y: hidden;
 
-.scrollContainer{
-        width:'100%';
-        border-radius: 40px;
-        background-color: navy;
-        margin-left: 10px;
-        margin-right: 10px;    
-        overflow: hidden;
-        position: relative;
-        height: 400px;
-        padding-top: 10px;
-        padding-bottom: 30px;
-        overflow-y: hidden;
-        
 }
-
-/* .scrollAnimation{
-  animation: autoScroll 1s linear infinite; 
-} */
 
 @keyframes autoScroll {
   0% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
+
   100% {
-      /* Calculate based on the total height of one set of items */
-      transform: translateY(-50%); /* For 50% duplication */
+    transform: translateY(-50%);
   }
 }
 
-
-
-
-.row, .rowHighlight{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    margin: 20px;
+.row,
+.rowHighlight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
 }
 
-.rowHighlight{
-    border-width: 10px;
-    border-radius: 40px;
-    border: 5px solid yellow;
-    margin: 10px;
-    color: 'black';
-    animation-name: breath;
+.rowHighlight {
+  border-width: 10px;
+  border-radius: 40px;
+  border: 5px solid yellow;
+  margin: 10px;
+  color: 'black';
+  animation-name: breath;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 
 @keyframes breath {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
 
-.rowContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    max-height: 300px;
-    overflow: hidden;
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.gridIcon{
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.gridIcon {
   margin: 5px;
   width: 50px;
-  height: 50px;  
+  height: 50px;
 }

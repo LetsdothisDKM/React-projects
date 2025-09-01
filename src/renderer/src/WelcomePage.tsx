@@ -7,7 +7,7 @@ const WelcomePage = (): React.ReactElement => {
   const [playerName, setPlayerName] = useState('')
   const [showGamePage, setShowGamePage] = useState(false)
   const [showUserStats, setShowUserStats] = useState(false)
-  
+
   return (
     <div className="welcome">
       {showGamePage && <Game playerName={playerName} />}
