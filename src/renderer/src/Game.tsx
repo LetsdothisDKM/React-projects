@@ -3,7 +3,7 @@ import SlotReel from './components/SlotReel'
 import SpinButton from './components/SpinButton'
 import './assets/game.css'
 import BetValue from './components/BetValue'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import GameStatus from './components/GameStatus'
 
 export const DEFAULT_COIN_COUNTER = 100
@@ -19,6 +19,23 @@ const Game = ({ playerName }: Props): React.ReactElement => {
   const [gameID, setGameID] = useState(null)
   const [symbols, setSymbols] = useState('')
   const [autoSpinned, setAutoSpinned] = useState(false)
+
+  const recordSpin = useCallback(async (): Promise<void> => {
+    if (gameID != null) {
+      try {
+        await window.api.recordSpin(gameID, symbols, 10, reward)
+      } catch (error) {
+        if (error instanceof Error) {
+          console.log('Error while recording spin' + error.message)
+        }
+      }
+    }
+  }, [gameID, reward, symbols])
+
+  const onClickingSpin = useCallback(async (): Promise<void> => {
+    setScroll(true)
+    await recordSpin()
+  }, [recordSpin])
 
   useEffect(() => {
     if (gameID == null) {
@@ -37,25 +54,23 @@ const Game = ({ playerName }: Props): React.ReactElement => {
       }
       getOrCreatePlayer()
     }
-  }, [playerName, gameID, autoSpinned, coins])
 
-  const onClickingSpin = async (): Promise<void> => {
-    setScroll(true)
-    await recordSpin()
-  }
+    const interval = setInterval(() => {
+      if (coins > 10 && (autoSpinned == true || scroll === true)) {
+        clearInterval(interval)
+        onClickingSpin()
+      } else {
+        setScroll(false)
+        setAutoSpinned(false)
+      }
+    }, 1000)
+
+    return (): void => clearInterval(interval)
+  }, [playerName, gameID, autoSpinned, coins, scroll, onClickingSpin])
 
   const updateCoins = (reward): void => {
     setReward(reward)
     setCoins(coins + reward - 10)
-  }
-  const recordSpin = async (): Promise<void> => {
-    if (gameID != null) {
-      try {
-        await window.api.recordSpin(gameID, symbols, 10, reward)
-      } catch (error) {
-        console.log('Error while recording spin' + error.message)
-      }
-    }
   }
 
   return (
@@ -64,7 +79,7 @@ const Game = ({ playerName }: Props): React.ReactElement => {
         <SpinButton
           className="headerItem"
           disabled={coins <= 10 || scroll || autoSpinned}
-          onClickingSpin={() => {}}
+          onClickingSpin={() => setAutoSpinned(true)}
           text="Auto Spin"
         />
         <h1 className="title">SLOT MACHINE</h1>
