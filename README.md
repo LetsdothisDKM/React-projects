@@ -10,6 +10,8 @@ An Electron application with React and TypeScript
 ## Run project locally
 
 - npm run dev
+
+
 1. Run the above command in VSCode terminal.
 2. This will open the Electron Slot Machine app.
 3. There is a welcome page where you can either input your name and start playing the game or choose to view user stats.
